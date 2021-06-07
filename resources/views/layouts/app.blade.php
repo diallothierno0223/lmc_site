@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- ** Plugins Needed for the Project ** -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="{{asset('style/plugins/bootstrap/bootstrap.min.css')}}">
   <!-- slick slider -->
@@ -29,6 +30,9 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="{{asset('style/images/favicon.png')}}" type="image/x-icon">
   <link rel="icon" href="{{asset('style/images/favicon.png')}}" type="image/x-icon">
+  {{-- galerie image  --}}
+  <link rel="stylesheet" href="{{asset('js_and_css/app.css')}}">
+  
 
 </head>
 
@@ -80,40 +84,38 @@
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item @@about">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item @@courses">
-              <a class="nav-link" href="courses.html">COURSES</a>
-            </li>
-            <li class="nav-item @@events">
-              <a class="nav-link" href="events.html">EVENTS</a>
-            </li>
-            <li class="nav-item @@blog">
-              <a class="nav-link" href=" {{route('journal.index')}} ">Actualité</a>
+            <li class="nav-item ">
+              <a class="nav-link" href="{{route('index')}}">Accueil</a>
             </li>
             <li class="nav-item dropdown view">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Pages
+                Presentation
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="teacher.html">Teacher</a>
-                <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
-                <a class="dropdown-item" href="notice.html">Notice</a>
-                <a class="dropdown-item" href="notice-single.html">Notice Details</a>
-                <a class="dropdown-item" href="research.html">Research</a>
-                <a class="dropdown-item" href="scholarship.html">Scholarship</a>
-                <a class="dropdown-item" href="course-single.html">Course Details</a>
-                <a class="dropdown-item" href="event-single.html">Event Details</a>
-                <a class="dropdown-item" href="blog-single.html">Blog Details</a>
+                <a class="dropdown-item" href="teacher.html">Administration</a>
+                <a class="dropdown-item" href="teacher-single.html">A-propos</a>
               </div>
             </li>
+            <li class="nav-item dropdown view">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Espace élève 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="teacher.html">reglement interieure</a>
+                <a class="dropdown-item" href="teacher-single.html">forum du lycée</a>
+                <a class="dropdown-item" href="notice.html">Résultat</a>
+              </div>
+            </li>
+            <li class="nav-item @@blog">
+              <a class="nav-link" href=" {{route('journal.index')}} ">Actualité</a>
+            </li>
+            <li class="nav-item @@events">
+              <a class="nav-link" href="{{route('gallery')}}">Galerie d'image</a>
+            </li>
             <li class="nav-item @@contact">
-              <a class="nav-link" href="contact.html">CONTACT</a>
+              <a class="nav-link" href="{{route('contact.create')}}">CONTACT</a>
             </li>
           </ul>
         </div>
@@ -122,17 +124,9 @@
   </div>
 </header>
 <!-- /header -->
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{session()->get('success')}}
-    </div>
-@endif
 
-@if (session()->has('error'))
-    <div class="alert alert-danger" role="alert">
-        {{session()->get('error')}}
-    </div>
-@endif
+
+
 
 
 
@@ -241,6 +235,13 @@
 
 <!-- Main Script -->
 <script src="{{asset('style/js/script.js')}}"></script>
+
+<!-- galerieimage Script -->
+<script src="{{asset('js_and_css/app.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>

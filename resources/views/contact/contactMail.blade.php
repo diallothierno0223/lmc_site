@@ -2,7 +2,7 @@
 # Bonjour
 
 vous avez recu un email de {{$data['name']}} et sont mail est {{$data['mail']}}
-#voici le sujet:
+# voici le sujet:
 {{$data['subject']}}
 # voici le message:
 

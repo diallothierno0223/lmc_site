@@ -16,7 +16,11 @@
   </div>
 </section>
 <!-- /page title -->
-
+@if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        <h3>{{session()->get('success')}}</h3>
+    </div>
+@endif
 <!-- contact -->
 <section class="section bg-gray">
   <div class="container">
@@ -29,10 +33,42 @@
       <div class="col-lg-7 mb-4 mb-lg-0">
         <form action="{{route('contact.envoyer')}}" method="post">
         @csrf
-          <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Your Name">
-          <input type="email" class="form-control mb-3" id="mail" name="mail" placeholder="Your Email">
-          <input type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Subject">
-          <textarea name="message" id="message" class="form-control mb-3" placeholder="Your Message"></textarea>
+        <div class="mt-3">
+          <input type="text" value="{{old('name') ?? ''}}" class="form-control mb-3 @error('name') is-invalid @enderror " id="name" name="name" placeholder="Your Name">
+          @error('name')
+            <div class="invalid-feedback">
+              <h6 class="text-danger">{{$errors->first('name')}}</h6>
+            </div>
+          @enderror
+        </div>
+
+        <div class="mt-3">
+          <input value="{{old('mail') ?? ''}}" type="email" class="form-control mb-3 @error('mail') is-invalid @enderror" id="mail" name="mail" placeholder="votre Email">
+          @error('mail')
+            <div class="invalid-feedback">
+              <h6 class="text-danger">{{$errors->first('mail')}}</h6>
+            </div>
+          @enderror
+        </div>
+
+        <div class="mt-3">
+          <input type="text" value="{{old('subject') ?? ''}}" class="form-control mb-3 @error('subject') is-invalid @enderror" id="subject" name="subject" placeholder="Subject">
+          @error('subject')
+            <div class="invalid-feedback">
+              <h6 class="text-danger">{{$errors->first('subject')}}</h6>
+            </div>
+          @enderror
+        </div>
+
+        <div class="mt-3">
+          <textarea name="message" id="message" class="form-control mb-3 @error('message') is-invalid @enderror" placeholder="Your Message">{{old('message') ?? ''}}</textarea>
+          @error('message')
+            <div class="invalid-feedback">
+              <h6 class="text-danger">{{$errors->first('message')}}</h6>
+            </div>
+          @enderror
+        </div>
+          
           <button type="submit" value="send" class="btn btn-primary">SEND MESSAGE</button>
         </form>
       </div>

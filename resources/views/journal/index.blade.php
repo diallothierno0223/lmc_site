@@ -22,7 +22,7 @@
   <!-- blogs -->
 <section class="section">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center">
 
         @foreach ($journals as $journal)
             <!-- blog post -->
@@ -37,7 +37,7 @@
                         <!-- author -->
                         <li class="list-inline-item mr-3 ml-0">par {{$journal->auteur}}</li>
                         </ul>
-                        <a href="blog-single.html">
+                        <a href="{{route('journal.detail', [ 'id' => $journal->id])}}">
                         <h4 class="card-title">{{$journal->title}}</h4>
                         </a>
                         <p class="card-text">{{$journal->subtitle}}</p>
@@ -47,7 +47,7 @@
                 </article>
           <!-- blog post -->
         @endforeach
-        
+        {{ $journals->links() }}
       </div>
     </div>
   </section>

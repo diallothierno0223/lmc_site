@@ -23,9 +23,8 @@ Route::get('actualite/{id}', 'JournalController@detail')->name('journal.detail')
 Route::post('journal/commentaire', 'JournalController@comment')->name('journal.comment');
 
 // journal close
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/', 'OtherController@home')->name('index');
+Route::get('gallery', 'OtherController@gallery')->name('gallery');
 
 
 Route::group(['prefix' => 'admin'], function () {

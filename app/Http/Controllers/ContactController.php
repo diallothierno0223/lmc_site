@@ -21,5 +21,7 @@ class ContactController extends Controller
         ]);
 
         Mail::to("thiernosaliou0223@gmail.com")->send(new ContactMail($data));
+
+        return back()->with("success", "votre message a bien ete envoyer");
     }
 }
