@@ -21,8 +21,8 @@ Route::post('contact/envoyer', 'ContactController@envoyer')->name('contact.envoy
 // journal start
 Route::get('actualite', 'JournalController@index')->name('journal.index');
 Route::get('actualite/{id}', 'JournalController@detail')->name('journal.detail');
-
 Route::post('journal/commentaire', 'JournalController@comment')->name('journal.comment');
+Route::get('journal/search', 'JournalController@search')->name('journal.search');
 // journal close
 Route::get('/', 'OtherController@home')->name('index');
 Route::get('gallery', 'OtherController@gallery')->name('gallery');

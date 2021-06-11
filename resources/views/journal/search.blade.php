@@ -22,15 +22,17 @@
   <!-- blogs -->
 <section class="section">
     <div class="container">
-      <div class="row justify-content-between mb-4 ">
-        <div class=""></div>
-        <div class="">
-          <form action="{{route('journal.search')}}" method="get" class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text"  name="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
+        <div class="row justify-content-between mb-4 ">
+            <div class="">
+                <p><strong>{{count($journals)}}</strong> resultat pour <strong>"{{request('search')}}"</strong></p>
+            </div>
+            <div class="">
+              <form action="{{route('journal.search')}}" method="get" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2 " type="text"  name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
       <div class="row justify-content-center">
 
         @foreach ($journals as $journal)
@@ -56,7 +58,7 @@
                 </article>
           <!-- blog post -->
         @endforeach
-        {{ $journals->links() }}
+        {{-- {{ $journals->links() }} --}}
       </div>
     </div>
   </section>

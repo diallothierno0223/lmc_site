@@ -10,9 +10,21 @@ class JournalController extends Controller
 {
     public function index(){
         $article = Journal::orderBy('created_at', 'desc')->paginate(15);
-        // dd($article);
         $data = ['journals' => $article];
         return view('journal.index', $data);
+    }
+
+    public function search(){
+        $q = request()->validate([
+            'search' => "required|min:5"
+        ]);
+        $article = Journal::where('title', 'like', '%'.$q['search'].'%')->
+                    orWhere('auteur', 'like', '%'.$q['search'].'%')->
+                    orWhere('subtitle', 'like', '%'.$q['search'].'%')->
+                    orWhere('article', 'like', '%'.$q['search'].'%')->get();
+        // dd($article);
+        $data = ['journals' => $article];
+        return view('journal.search', $data);
     }
 
     public function detail(Journal $id){
