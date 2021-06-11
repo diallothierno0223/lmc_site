@@ -103,7 +103,7 @@
                 Espace élève 
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="teacher.html">reglement interieure</a>
+                <a class="dropdown-item" href="{{route('reglement.index')}}">reglement interieure</a>
                 <a class="dropdown-item" href="teacher-single.html">forum du lycée</a>
                 <a class="dropdown-item" href="notice.html">Résultat</a>
               </div>
