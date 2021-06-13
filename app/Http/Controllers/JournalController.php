@@ -39,4 +39,17 @@ class JournalController extends Controller
         return back()->with('success', 'votre commentaire a bien ete ajouter');
     }
 
+    public function search(){
+        $q = request()->validate([
+            'search' => "required"
+        ]);
+        $article = Journal::where('title', 'like', '%'.$q['search'].'%')->
+                            orWhere('auteur', 'like', '%'.$q['search'].'%')->
+                            orWhere('subtitle', 'like', '%'.$q['search'].'%')->
+                            orWhere('article', 'like', '%'.$q['search'].'%')->
+                            orderBy('updated_at', 'desc')->get();
+        $data = ['journals' => $article];
+        return view('journal.search', $data);
+    }
+
 }

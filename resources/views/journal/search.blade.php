@@ -22,22 +22,22 @@
   <!-- blogs -->
 <section class="section">
     <div class="container">
-      <div class="row mb-4 justify-content-between">
-        <div class=""></div>
-        <div class="">
-          <form action="{{route('journal.search')}}" method="get" class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
+        <div class="row mb-4 justify-content-between">
+            <div class=""> <p><strong>{{count($journals)}}</strong> résultat trouver pour "<strong>{{request()->search}}</strong>"</p> </div>
+            <div class="">
+              <form action="{{route('journal.search')}}" method="get" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
       <div class="row justify-content-center">
 
         @foreach ($journals as $journal)
             <!-- blog post -->
                 <article class="col-lg-4 col-sm-6 mb-5">
                     <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                    <img class="card-img-top rounded-0" width="330" height="185" src="{{asset('storage/'.$journal->image)}}" alt="Post thumb">
+                    <img class="card-img-top rounded-0" width="330" height="185"  src="{{asset('storage/'.$journal->image)}}" alt="Post thumb">
                     <div class="card-body">
                         <!-- post meta -->
                         <ul class="list-inline mb-3">
@@ -56,7 +56,6 @@
                 </article>
           <!-- blog post -->
         @endforeach
-        {{ $journals->links() }}
       </div>
     </div>
   </section>
